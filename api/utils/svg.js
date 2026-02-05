@@ -2,25 +2,23 @@ function createCard({ width = 495, height = 195, bg_color, border_color, title, 
   return `
     <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg">
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-        
         .card-bg { 
           filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
         }
         .header { 
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 20px;
           font-weight: 700;
           letter-spacing: -0.5px;
         }
         .stat-label { 
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
           font-size: 13px;
           font-weight: 500;
           letter-spacing: 0.3px;
         }
         .stat-value { 
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
           font-size: 18px;
           font-weight: 700;
         }
