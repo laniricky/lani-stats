@@ -100,10 +100,59 @@ function renderStatsCard(stats, theme) {
           ${stat.icon}
         </g>
         <text class="stat-label" fill="#${text_color}" x="32" y="0">${stat.label}</text>
-        <text class="stat-value" fill="#${title_color}" x="447" y="2" text-anchor="end">${stat.value.toLocaleString()}</text>
+        <text class="stat-value" fill="#${title_color}" x="310" y="2" text-anchor="end">${stat.value.toLocaleString()}</text>
       </g>
     `;
   }).join('');
+
+  // Calculate grade based on overall activity
+  const totalActivity = stats.totalStars + stats.totalRepos * 2 + stats.totalForks * 1.5 + stats.followers * 3;
+  let grade = 'C';
+  let percentage = 50;
+
+  if (totalActivity >= 200) { grade = 'S'; percentage = 95; }
+  else if (totalActivity >= 150) { grade = 'A+'; percentage = 90; }
+  else if (totalActivity >= 100) { grade = 'A'; percentage = 80; }
+  else if (totalActivity >= 50) { grade = 'B'; percentage = 70; }
+  else if (totalActivity >= 25) { grade = 'C'; percentage = 60; }
+
+  // Create circular progress indicator
+  const circleX = 400;
+  const circleY = 140;
+  const radius = 45;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (percentage / 100) * circumference;
+
+  const gradeCircle = `
+    <g transform="translate(${circleX}, ${circleY})">
+      <!-- Background circle -->
+      <circle cx="0" cy="0" r="${radius}" fill="none" stroke="#${border_color}" stroke-width="6" opacity="0.3"/>
+      
+      <!-- Progress circle -->
+      <circle 
+        cx="0" 
+        cy="0" 
+        r="${radius}" 
+        fill="none" 
+        stroke="#${icon_color}" 
+        stroke-width="6" 
+        stroke-dasharray="${circumference}" 
+        stroke-dashoffset="${offset}"
+        stroke-linecap="round"
+        transform="rotate(-90)"
+        style="transition: stroke-dashoffset 0.5s ease;"
+      />
+      
+      <!-- Grade text -->
+      <text 
+        x="0" 
+        y="8" 
+        text-anchor="middle" 
+        fill="#${title_color}" 
+        style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 36px; font-weight: 700;"
+      >${grade}</text>
+    </g>
+  `;
 
   return createCard({
     width: 495,
@@ -111,7 +160,7 @@ function renderStatsCard(stats, theme) {
     bg_color,
     border_color,
     title,
-    body,
+    body: body + gradeCircle,
   });
 }
 
