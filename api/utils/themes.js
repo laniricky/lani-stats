@@ -1,4 +1,11 @@
 const themes = {
+    laniricky: {
+        title_color: '00e676',
+        icon_color: '00e676',
+        text_color: 'ffffff',
+        bg_color: '0d1117',
+        border_color: '30363d',
+    },
     github_dark: {
         title_color: '58a6ff',
         icon_color: '1f6feb',
