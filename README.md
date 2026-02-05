@@ -36,10 +36,22 @@ Custom-built GitHub stats SVG generator designed for embedding in your profile R
 
 ## Available Themes
 
-- **laniricky** - Bright green on dark (signature theme)
-- **tokyonight** - Blue-purple neon
-- **dark** - Classic dark mode
-- **default** - Light mode
+Choose from 10 professionally designed themes:
+
+- **github_dark** - GitHub's official dark theme
+- **github_light** - GitHub's official light theme  
+- **moonlight** - Purple-blue moonlit aesthetic
+- **nord** - Arctic, north-bluish color palette
+- **dracula** - Dark theme with vivid colors
+- **monokai** - Classic code editor theme
+- **ocean** - Deep blue oceanic vibes
+- **synthwave** - Retro 80s neon aesthetic
+- **midnight** - Deep dark with cyan accents
+- **slate** - Modern slate blue palette
+
+```markdown
+![GitHub Stats](https://lani-stats.vercel.app/api?username=laniricky&theme=nord)
+```
 
 ## Deployment
 
