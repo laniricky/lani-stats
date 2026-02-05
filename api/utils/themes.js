@@ -6,6 +6,13 @@ const themes = {
         bg_color: '0d1117',
         border_color: '30363d',
     },
+    genz: {
+        title_color: 'ff10f0',
+        icon_color: '00f0ff',
+        text_color: 'e0e0ff',
+        bg_color: '0a0014',
+        border_color: '2d1b69',
+    },
     github_dark: {
         title_color: '58a6ff',
         icon_color: '1f6feb',
