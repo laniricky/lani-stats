@@ -1,0 +1,21 @@
+{
+    "name": "lani-stats",
+    "version": "1.0.0",
+    "description": "Lightweight GitHub stats generator API",
+    "main": "api/index.js",
+    "scripts": {
+        "dev": "vercel dev"
+    },
+    "keywords": [
+        "github",
+        "stats",
+        "svg",
+        "vercel"
+    ],
+    "author": "laniricky",
+    "license": "MIT",
+    "dependencies": {},
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
