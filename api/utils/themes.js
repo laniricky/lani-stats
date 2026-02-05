@@ -1,12 +1,12 @@
 const themes = {
     laniricky: {
-        title_color: '00e676',
-        icon_color: '00e676',
+        title_color: '#ff9d00',
+        icon_color: '#ff9d00',
         text_color: 'ffffff',
-        bg_color: '0d1117',
-        border_color: '30363d',
+        bg_color: '#5c3901',
+        border_color: '#ff9d00',
     },
-    genz: {
+    blue_pink: {
         title_color: 'ff10f0',
         icon_color: '00f0ff',
         text_color: 'e0e0ff',
@@ -90,3 +90,4 @@ function getTheme(themeName = 'github_dark') {
 }
 
 module.exports = { themes, getTheme };
+
