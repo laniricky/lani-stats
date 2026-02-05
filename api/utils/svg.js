@@ -1,19 +1,44 @@
 function createCard({ width = 495, height = 195, bg_color, border_color, title, body }) {
   return `
     <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#${bg_color};stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#${bg_color};stop-opacity:0.8" />
-        </linearGradient>
-      </defs>
       <style>
-        .header { font: 600 18px 'Segoe UI', Ubuntu, 'Helvetica Neue', Sans-Serif; }
-        .stat-label { font: 600 14px 'Segoe UI', Ubuntu, Sans-Serif; }
-        .stat-value { font: 700 14px 'Segoe UI', Ubuntu, Sans-Serif; }
-        .icon { opacity: 0.8; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        .card-bg { 
+          filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+        .header { 
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+          font-size: 20px;
+          font-weight: 700;
+          letter-spacing: -0.5px;
+        }
+        .stat-label { 
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 0.3px;
+        }
+        .stat-value { 
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-size: 18px;
+          font-weight: 700;
+        }
+        .divider {
+          opacity: 0.1;
+        }
       </style>
-      <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="4.5" fill="url(#grad)" stroke="#${border_color}" stroke-opacity="0.6"/>
+      <rect 
+        class="card-bg"
+        x="0.5" 
+        y="0.5" 
+        width="${width - 1}" 
+        height="${height - 1}" 
+        rx="6" 
+        fill="#${bg_color}" 
+        stroke="#${border_color}"
+        stroke-width="1.5"
+      />
       ${title}
       ${body}
     </svg>
@@ -23,14 +48,43 @@ function createCard({ width = 495, height = 195, bg_color, border_color, title, 
 function renderStatsCard(stats, theme) {
   const { title_color, text_color, icon_color, bg_color, border_color } = theme;
 
-  const title = `<text x="25" y="35" class="header" fill="#${title_color}">${stats.name}'s GitHub Stats</text>`;
+  const title = `
+    <text x="24" y="38" class="header" fill="#${title_color}">
+      ${stats.name}'s GitHub Stats
+    </text>
+    <line x1="24" y1="52" x2="471" y2="52" stroke="#${border_color}" class="divider" stroke-width="1"/>
+  `;
 
-  // SVG icons for each stat
+  // Professional Material Design icons
   const icons = {
-    stars: `<path fill="#${icon_color}" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>`,
-    repos: `<path fill="#${icon_color}" d="M4 9h16v11H4V9zm0-2V5c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2v2H4zm2 0h12V5H6v2z"/>`,
-    forks: `<path fill="#${icon_color}" d="M5 7c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm11 0c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zM8 19c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm6-10.5C14 7.1 13.1 6 12 6s-2 1.1-2 2.5V12h4V8.5z"/>`,
-    followers: `<path fill="#${icon_color}" d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>`,
+    stars: `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" 
+              fill="#${icon_color}" stroke="#${icon_color}" stroke-width="0.5" stroke-linejoin="round"/>
+      </svg>
+    `,
+    repos: `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M3 3C3 1.89543 3.89543 1 5 1H19C20.1046 1 21 1.89543 21 3V18C21 19.1046 20.1046 20 19 20H5C3.89543 20 3 19.1046 3 18V3Z" 
+              fill="#${icon_color}"/>
+        <rect x="3" y="6" width="18" height="2" fill="#${bg_color}"/>
+      </svg>
+    `,
+    forks: `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <circle cx="6" cy="6" r="3" fill="#${icon_color}"/>
+        <circle cx="18" cy="6" r="3" fill="#${icon_color}"/>
+        <circle cx="12" cy="18" r="3" fill="#${icon_color}"/>
+        <path d="M6 9v2c0 2.21 1.79 4 4 4h4c2.21 0 4-1.79 4-4V9" stroke="#${icon_color}" stroke-width="2" fill="none"/>
+        <path d="M12 15v-2" stroke="#${icon_color}" stroke-width="2"/>
+      </svg>
+    `,
+    followers: `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="8" r="4" fill="#${icon_color}"/>
+        <path d="M6 21c0-3.31 2.69-6 6-6s6 2.69 6 6" stroke="#${icon_color}" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      </svg>
+    `,
   };
 
   const statsList = [
@@ -41,21 +95,21 @@ function renderStatsCard(stats, theme) {
   ];
 
   const body = statsList.map((stat, i) => {
-    const y = 70 + i * 30;
+    const y = 78 + i * 36;
     return `
-      <g transform="translate(25, ${y})">
-        <svg width="20" height="20" viewBox="0 0 24 24" class="icon" y="-15">
+      <g transform="translate(24, ${y})">
+        <g transform="translate(0, -8)">
           ${stat.icon}
-        </svg>
-        <text class="stat-label" fill="#${text_color}" x="30" y="0">${stat.label}:</text>
-        <text class="stat-value" fill="#${icon_color}" x="380" y="0" text-anchor="end">${stat.value.toLocaleString()}</text>
+        </g>
+        <text class="stat-label" fill="#${text_color}" x="32" y="0">${stat.label}</text>
+        <text class="stat-value" fill="#${title_color}" x="447" y="2" text-anchor="end">${stat.value.toLocaleString()}</text>
       </g>
     `;
   }).join('');
 
   return createCard({
     width: 495,
-    height: 195,
+    height: 220,
     bg_color,
     border_color,
     title,
@@ -66,28 +120,44 @@ function renderStatsCard(stats, theme) {
 function renderLanguagesCard(languages, theme) {
   const { title_color, text_color, icon_color, bg_color, border_color } = theme;
 
-  const title = `<text x="25" y="35" class="header" fill="#${title_color}">Most Used Languages</text>`;
+  const title = `
+    <text x="24" y="38" class="header" fill="#${title_color}">
+      Top Languages
+    </text>
+    <line x1="24" y1="52" x2="471" y2="52" stroke="#${border_color}" class="divider" stroke-width="1"/>
+  `;
 
-  // Color palette for language bars
-  const langColors = ['#00e676', '#ff6e96', '#79dafa', '#f8d847', '#bf91f3'];
+  // Professional color palette for languages
+  const langColors = [
+    icon_color,
+    title_color,
+    text_color,
+    ...['5e81ac', '88c0d0', 'ebcb8b', 'a3be8c', 'bf616a'].map(c => c)
+  ];
 
   const body = languages.map((lang, i) => {
-    const y = 70 + i * 35;
-    const barWidth = Math.min(parseFloat(lang.percentage) * 3.5, 350);
+    const y = 78 + i * 38;
+    const percentage = parseFloat(lang.percentage);
+    const barWidth = Math.min((percentage / 100) * 360, 360);
     const color = langColors[i % langColors.length];
 
     return `
-      <g transform="translate(25, ${y})">
+      <g transform="translate(24, ${y})">
         <text class="stat-label" fill="#${text_color}" x="0" y="0">${lang.name}</text>
-        <rect x="150" y="-12" width="${barWidth}" height="16" fill="${color}" rx="8" opacity="0.9"/>
-        <text class="stat-value" fill="#${text_color}" x="${165 + barWidth}" y="0">${lang.percentage}%</text>
+        <g transform="translate(0, 8)">
+          <rect width="360" height="6" rx="3" fill="#${border_color}" opacity="0.3"/>
+          <rect width="${barWidth}" height="6" rx="3" fill="#${color}"/>
+        </g>
+        <text class="stat-value" fill="#${title_color}" x="447" y="0" text-anchor="end" style="font-size: 14px;">${percentage.toFixed(1)}%</text>
       </g>
     `;
   }).join('');
 
+  const cardHeight = Math.max(220, 78 + languages.length * 38 + 24);
+
   return createCard({
     width: 495,
-    height: Math.max(195, 70 + languages.length * 35 + 25),
+    height: cardHeight,
     bg_color,
     border_color,
     title,
