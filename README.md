@@ -36,8 +36,10 @@ Custom-built GitHub stats SVG generator designed for embedding in your profile R
 
 ## Available Themes
 
-Choose from 10 professionally designed themes:
+Choose from 23 professionally designed themes:
 
+### Official & Classic
+- **laniricky** - Signature orange and brown theme
 - **github_dark** - GitHub's official dark theme
 - **github_light** - GitHub's official light theme  
 - **moonlight** - Purple-blue moonlit aesthetic
@@ -48,9 +50,25 @@ Choose from 10 professionally designed themes:
 - **synthwave** - Retro 80s neon aesthetic
 - **midnight** - Deep dark with cyan accents
 - **slate** - Modern slate blue palette
+- **blue_pink** - Vibrant neon pink and cyan contrast
+
+### New Color Palettes
+- **lavender_mint** - Soft lavender with golden accents
+- **ocean_sky** - Bright sky blue with ocean depths
+- **military_olive** - Earthy olive green military aesthetic
+- **neon_splash** - Electric purple and lime on black
+- **autumn_spice** - Warm orange and brown autumn tones
+- **cyber_teal** - Futuristic cyan and blue neon
+- **purple_twilight** - Deep purple twilight gradient
+- **forest_sage** - Natural sage green forest theme
+- **deep_ocean** - Rich ocean blue depths
+- **sunset_steel** - Vibrant orange sunset over steel
+- **lavender_dream** - Soft purple with cream accents
+- **coral_sage** - Gentle coral pink with sage green
+- **crimson_gold** - Bold crimson with golden yellow
 
 ```markdown
-![GitHub Stats](https://lani-stats.vercel.app/api?username=laniricky&theme=nord)
+![GitHub Stats](https://lani-stats.vercel.app/api?username=laniricky&theme=neon_splash)
 ```
 
 ## Deployment
